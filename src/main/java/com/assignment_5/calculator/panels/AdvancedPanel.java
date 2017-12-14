@@ -40,7 +40,7 @@ public class AdvancedPanel extends JPanel {
 		}
 		public void setButtonFonts() {
 			String dialog = "Dialog";
-			int fontSize = 10;
+			int fontSize = 12;
 			
 			btnSquare.setFont(new Font(dialog, Font.BOLD, fontSize));
 			btnPowerOf.setFont(new Font(dialog, Font.BOLD, fontSize));
@@ -51,13 +51,15 @@ public class AdvancedPanel extends JPanel {
 		}
 
 		public void setButtonBounds() {
-			// setBounds(2, 84, 284, 262);
-			btnSquare.setBounds(212, 2, 70, 50);
-			btnPowerOf.setBounds(212, 54, 70, 50);
-			btnSquareRoot.setBounds(212, 106, 70, 50);
-			btnNthRoot.setBounds(212, 158, 70, 50);
-			btnLog.setBounds(212, 210, 70, 50);
-			btnTensPower.setBounds(140, 210, 70, 50);
+			int buttonSizeX = 70;
+			int buttonSizeY = 50;
+			
+			btnSquare.setBounds(212, 2, buttonSizeX, buttonSizeY);
+			btnPowerOf.setBounds(212, 54, buttonSizeX, buttonSizeY);
+			btnSquareRoot.setBounds(212, 106, buttonSizeX, buttonSizeY);
+			btnNthRoot.setBounds(212, 158, buttonSizeX, buttonSizeY);
+			btnLog.setBounds(212, 210, buttonSizeX, buttonSizeY);
+			btnTensPower.setBounds(140, 210, buttonSizeX, buttonSizeY);
 		}
 		
 		public void setToolTipsText() {

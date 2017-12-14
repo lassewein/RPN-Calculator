@@ -5,10 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import com.assignment_5.calculator.windows.WindowBasic;
+
 
 public class BasicPanel extends JPanel {
 
@@ -19,7 +21,8 @@ public class BasicPanel extends JPanel {
 	/**
 	 * 
 	 */
-//	private JTextArea textArea = new JTextArea();
+	String numberToInsert = "";
+	private TextAreaPanel stacks;
 	
 	// Row 1, left to right
 	private JButton btnSwap = new JButton("\u21F3");
@@ -51,7 +54,9 @@ public class BasicPanel extends JPanel {
 	private JButton btnPlusMinus = new JButton("\u00B1");
 	private JButton btnEnter = new JButton("\u21B5");
 
-	public BasicPanel() {
+
+	public BasicPanel(final TextAreaPanel stacks) {
+		this.stacks = stacks;
 		setBounds(288, 84, 210, 262);
 		setLayout(null);
 		
@@ -127,36 +132,37 @@ public class BasicPanel extends JPanel {
 	}
 
 	public void setButtonBounds() {
+		int buttonSize = 50;
 		
 		//Row 1, left to right	
-		btnSwap.setBounds(2, 2, 50, 50);
-		btnClear.setBounds(54, 2, 50, 50);
-		btnBackspace.setBounds(106, 2, 50, 50);
-		btnDivide.setBounds(158, 2, 50, 50);
+		btnSwap.setBounds(2, 2, buttonSize, buttonSize);
+		btnClear.setBounds(54, 2, buttonSize, buttonSize);
+		btnBackspace.setBounds(106, 2, buttonSize, buttonSize);
+		btnDivide.setBounds(158, 2, buttonSize, buttonSize);
 		
 		//Row 2, left to right
-		btn7.setBounds(2, 54, 50, 50);
-		btn8.setBounds(54, 54, 50, 50);
-		btn9.setBounds(106, 54, 50, 50);
-		btnMultiply.setBounds(158, 54, 50, 50);
+		btn7.setBounds(2, 54, buttonSize, buttonSize);
+		btn8.setBounds(54, 54, buttonSize, buttonSize);
+		btn9.setBounds(106, 54, buttonSize, buttonSize);
+		btnMultiply.setBounds(158, 54, buttonSize, buttonSize);
 		
 		//Row 3, left to right
-		btn4.setBounds(2, 106, 50, 50);
-		btn5.setBounds(54, 106, 50, 50);
-		btn6.setBounds(106, 106, 50, 50);
-		btnAdd.setBounds(158, 106, 50, 50);
+		btn4.setBounds(2, 106, buttonSize, buttonSize);
+		btn5.setBounds(54, 106, buttonSize, buttonSize);
+		btn6.setBounds(106, 106, buttonSize, buttonSize);
+		btnAdd.setBounds(158, 106, buttonSize, buttonSize);
 		
 		//Row 4, left to right
-		btn1.setBounds(2, 158, 50, 50);
-		btn2.setBounds(54, 158, 50, 50);
-		btn3.setBounds(106, 158, 50, 50);
-		btnSubtract.setBounds(158, 158, 50, 50);
+		btn1.setBounds(2, 158, buttonSize, buttonSize);
+		btn2.setBounds(54, 158, buttonSize, buttonSize);
+		btn3.setBounds(106, 158, buttonSize, buttonSize);
+		btnSubtract.setBounds(158, 158, buttonSize, buttonSize);
 		
 		//Row 5, left to right
-		btn0.setBounds(2, 210, 50, 50);
-		btnDot.setBounds(54, 210, 50, 50);
-		btnPlusMinus.setBounds(106, 210, 50, 50);
-		btnEnter.setBounds(158, 210, 50, 50);
+		btn0.setBounds(2, 210, buttonSize, buttonSize);
+		btnDot.setBounds(54, 210, buttonSize, buttonSize);
+		btnPlusMinus.setBounds(106, 210, buttonSize, buttonSize);
+		btnEnter.setBounds(158, 210, 52, 52);
 	}
 
 	public void setToolTipsText() {
@@ -166,31 +172,84 @@ public class BasicPanel extends JPanel {
 		btnBackspace.setToolTipText("Delete the value on the left of the cursor.");
 		btnEnter.setToolTipText("Store the value tothe stack.");
 	}
-
+	
 	public void addActionListeners() {
+		
+		btnSwap.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		btnBackspace.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
 		btnDivide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				 numberToInsert += btn7.getText();
-//				textArea.append(btn7.getText());
+				stacks.setText(btn7.getText());
+//				textArea.getTextArea().setText("7gfdgjhfjgjhgjgfjhgfjhfjfhgf");
+//				JOptionPane.showMessageDialog(null, textArea.getTextArea().getText().toString());
+//				TextAreaPanel.text
+//				numberToInsert += btn7.getText();
+//				textArea.addToTextArea(btn7.getText());
 			}
 		});
+		
 
 		btn8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// numberToInsert += btn8.getText();
-				// textArea.append(btn8.getText());
+				numberToInsert += btn8.getText();
+				//textArea.append(btn8.getText());
 			}
 		});
 
 		btn9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// numberToInsert += btn9.getText();
-				// textArea.append(btn9.getText());;
+				numberToInsert += btn9.getText();
+				//textArea.append(btn9.getText());;
+			}
+		});
+
+		btnMultiply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// firstNumber = Double.parseDouble(textArea.getText());
+				// textArea.setText("");
+			}
+		});
+
+		btn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 numberToInsert += btn4.getText();
+				//textArea.append(btn4.getText());
+			}
+		});
+
+		btn5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 numberToInsert += btn5.getText();
+				//textArea.append(btn5.getText());
+			}
+		});
+	
+		btn6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 numberToInsert += btn6.getText();
+				//textArea.append(btn6.getText());
 			}
 		});
 
@@ -210,6 +269,33 @@ public class BasicPanel extends JPanel {
 			}
 		});
 
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				numberToInsert += btn1.getText();
+				//textArea.append(btn1.getText());
+				// String numberEntered = textArea.getText() + btn1.getText();
+				// textArea.setText(numberEntered);
+			}
+		});
+		
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				numberToInsert += btn2.getText();
+				//textArea.append(btn2.getText());
+				// String numberEntered = textArea.getText() + btn2.getText();
+				// textArea.setText(numberEntered);
+			}
+		});
+
+		btn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				numberToInsert += btn3.getText();
+				//textArea.append(btn3.getText());
+				// String numberEntered = textArea.getText() + btn3.getText();
+				// textArea.setText(numberEntered);
+			}
+		});
+		
 		btnSubtract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// firstNumber = Double.parseDouble(textArea.getText());
@@ -217,56 +303,27 @@ public class BasicPanel extends JPanel {
 				// operator = "-";
 			}
 		});
-
-		btn6.addActionListener(new ActionListener() {
+		
+		btn0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// numberToInsert += btn6.getText();
-				// textArea.append(btn6.getText());
+				numberToInsert += btn0.getText();
+				//textArea.append(btn0.getText());
 			}
 		});
-
-		btnMultiply.addActionListener(new ActionListener() {
+		
+		btnDot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// firstNumber = Double.parseDouble(textArea.getText());
-				// textArea.setText("");
+				numberToInsert += btnDot.getText();
+				//textArea.append(btnDot.getText());
 			}
 		});
-
-		btn3.addActionListener(new ActionListener() {
+		
+		btnPlusMinus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// String numberEntered = textArea.getText() + btn3.getText();
-				// textArea.setText(numberEntered);
+				
 			}
 		});
-
-		btn2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// String numberEntered = textArea.getText() + btn2.getText();
-				// textArea.setText(numberEntered);
-			}
-		});
-
-		btn5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// numberToInsert += btn5.getText();
-				// textArea.append(btn5.getText());
-			}
-		});
-
-		btn4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// numberToInsert += btn4.getText();
-				// textArea.append(btn4.getText());
-			}
-		});
-
-		btn1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// String numberEntered = textArea.getText() + btn1.getText();
-				// textArea.setText(numberEntered);
-			}
-		});
-
+		
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// numberStack.push(Double.parseDouble(numberToInsert + "\n"));
