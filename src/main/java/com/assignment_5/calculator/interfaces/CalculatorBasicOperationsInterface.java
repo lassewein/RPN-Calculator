@@ -5,4 +5,5 @@ public interface CalculatorBasicOperationsInterface {
 	public double calculatorSubtract(double a, double b);
 	public double calculatorMultiplication(double a, double b);
 	public double calculatorDivision(double t, double n);
+	public double calculatorNegative(double a);
 }
