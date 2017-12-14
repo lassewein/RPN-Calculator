@@ -3,12 +3,15 @@ package com.assignment_5.calculator.panels;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Stack;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import com.assignment_5.calculator.operations.CalculatorAdvanceOperations;
+import com.assignment_5.calculator.operations.CalculatorBasicOperations;
 import com.assignment_5.calculator.windows.WindowBasic;
 
 
@@ -23,6 +26,8 @@ public class BasicPanel extends JPanel {
 	 */
 	String numberToInsert = "";
 	private TextAreaPanel stacks;
+	private CalculatorBasicOperations calculateBasic = new CalculatorBasicOperations();
+	private Stack<Double> stack = new Stack<Double>();
 	
 	// Row 1, left to right
 	private JButton btnSwap = new JButton("\u21F3");
@@ -201,11 +206,11 @@ public class BasicPanel extends JPanel {
 
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				stacks.setText(btn7.getText());
+//				stacks.setText(btn7.getText());
 //				textArea.getTextArea().setText("7gfdgjhfjgjhgjgfjhgfjhfjfhgf");
 //				JOptionPane.showMessageDialog(null, textArea.getTextArea().getText().toString());
 //				TextAreaPanel.text
-//				numberToInsert += btn7.getText();
+				numberToInsert += btn7.getText();
 //				textArea.addToTextArea(btn7.getText());
 			}
 		});
@@ -229,6 +234,7 @@ public class BasicPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// firstNumber = Double.parseDouble(textArea.getText());
 				// textArea.setText("");
+				
 			}
 		});
 
@@ -255,6 +261,8 @@ public class BasicPanel extends JPanel {
 
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(calculateBasic.calculatorAdd(5, 8));
+				calculateBasic.calculatorAdd(5, 8);
 				// if(numberToInsert != "") {
 				// firstNumber = numberStack.pop();
 				// secondNumber = Double.parseDouble(numberToInsert);
@@ -326,9 +334,10 @@ public class BasicPanel extends JPanel {
 		
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// numberStack.push(Double.parseDouble(numberToInsert + "\n"));
-				// numberToInsert = "";
+				 stack.push(Double.parseDouble(numberToInsert + "\n"));
+				 numberToInsert = "";
 				// textArea.append("\n");
+				 System.out.println(stack);
 			}
 		});
 
