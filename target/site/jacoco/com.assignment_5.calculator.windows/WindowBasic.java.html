@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WindowBasic.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">calculator-larsw</a> &gt; <a href="index.source.html" class="el_package">com.assignment_5.calculator.windows</a> &gt; <span class="el_source">WindowBasic.java</span></div><h1>WindowBasic.java</h1><pre class="source lang-java linenums">package com.assignment_5.calculator.windows;
+
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+import com.assignment_5.calculator.panels.AdvancedPanel;
+import com.assignment_5.calculator.panels.BasicPanel;
+import com.assignment_5.calculator.panels.TextAreaPanel;
+
+
+import java.util.Stack;
+import java.awt.ComponentOrientation;
+import java.awt.Window;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+import javax.swing.JButton;
+
+public class WindowBasic{
+	/**
+	 * 
+	 */
+//	private static final long serialVersionUID = 4457067577056812423L;
+
+<span class="nc" id="L25">	private Stack&lt;Double&gt; numberStack = new Stack&lt;Double&gt;();</span>
+	private TextAreaPanel stacks;
+<span class="nc" id="L27">	private JFrame frame = new JFrame();</span>
+<span class="nc" id="L28">	private BasicPanel basicPanel = new BasicPanel(stacks);</span>
+<span class="nc" id="L29">	private AdvancedPanel advancedPanel = new AdvancedPanel();</span>
+<span class="nc" id="L30">	public TextAreaPanel textAreaPanel = new TextAreaPanel();</span>
+	
+	
+
+	private double firstNumber;
+	private double secondNumber;
+<span class="nc" id="L36">	private String numberToInsert = &quot;&quot;;</span>
+	private double result;	
+
+	
+	/**
+	 * Create the application.
+	 */
+<span class="nc" id="L43">	public WindowBasic() {</span>
+<span class="nc" id="L44">		initialize();</span>
+<span class="nc" id="L45">	}</span>
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	public void initialize() { 
+<span class="nc" id="L51">		frame.setBounds(100, 100, 500, 348);</span>
+<span class="nc" id="L52">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L53">		frame.getContentPane().setLayout(null);</span>
+<span class="nc" id="L54">		frame.setTitle(&quot;Calculator&quot;);</span>
+
+<span class="nc" id="L56">		textAreaPanel.setBorder(new LineBorder(new Color(0, 0, 0)));</span>
+<span class="nc" id="L57">		basicPanel.setBorder(new LineBorder(new Color(0, 0, 0)));</span>
+<span class="nc" id="L58">		advancedPanel.setBorder(new LineBorder(new Color(0, 0, 0)));</span>
+		
+<span class="nc" id="L60">		frame.getContentPane().add(textAreaPanel);</span>
+<span class="nc" id="L61">	    frame.getContentPane().add(basicPanel);</span>
+<span class="nc" id="L62">	    frame.getContentPane().add(advancedPanel);</span>
+	    
+<span class="nc" id="L64">	    frame.setVisible(true);</span>
+<span class="nc" id="L65">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

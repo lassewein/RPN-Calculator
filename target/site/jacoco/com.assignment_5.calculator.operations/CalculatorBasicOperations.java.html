@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CalculatorBasicOperations.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">calculator-larsw</a> &gt; <a href="index.source.html" class="el_package">com.assignment_5.calculator.operations</a> &gt; <span class="el_source">CalculatorBasicOperations.java</span></div><h1>CalculatorBasicOperations.java</h1><pre class="source lang-java linenums">/**
+ * 
+ */
+package com.assignment_5.calculator.operations;
+
+import com.assignment_5.calculator.interfaces.CalculatorBasicOperationsInterface;
+
+/**
+ * @author lars
+ *
+ */
+<span class="fc" id="L12">public class CalculatorBasicOperations implements CalculatorBasicOperationsInterface {</span>
+
+	/* (non-Javadoc)
+	 * @see com.assignment_5.calculator.interfaces.CalculatorBasicOperationsInterface#calculatorAdd(double, double)
+	 */
+	public double calculatorAdd(double a, double b) {
+<span class="fc" id="L18">		double result = a + b;</span>
+<span class="fc" id="L19">		return result;</span>
+	}
+
+
+	/* (non-Javadoc)
+	 * @see com.assignment_5.calculator.interfaces.CalculatorBasicOperationsInterface#calculatorSubtract(double, double)
+	 */
+	public double calculatorSubtract(double a, double b) {
+<span class="fc" id="L27">		double result = a - b; </span>
+<span class="fc" id="L28">		return result;</span>
+	}
+
+
+	/* (non-Javadoc)
+	 * @see com.assignment_5.calculator.interfaces.CalculatorBasicOperationsInterface#calculatorMultiplication(double, double)
+	 */
+	public double calculatorMultiplication(double a, double b) {
+<span class="fc" id="L36">		double result = a * b;</span>
+<span class="fc" id="L37">		return result;</span>
+	}
+
+	/* (non-Javadoc)
+	 * @see com.assignment_5.calculator.interfaces.CalculatorBasicOperationsInterface#calculatorDivision(double, double)
+	 */
+	public double calculatorDivision(double a, double b) {
+<span class="fc" id="L44">		double result = a / b;</span>
+<span class="fc" id="L45">		return result;</span>
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.assignment_5.calculator.interfaces.CalculatorBasicOperationsInterface#calculatorDivision(double, double)
+	 */
+	public double calculatorNegative(double a) {
+<span class="fc" id="L52">		double result = -a;</span>
+<span class="fc" id="L53">		return result;</span>
+	}
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
