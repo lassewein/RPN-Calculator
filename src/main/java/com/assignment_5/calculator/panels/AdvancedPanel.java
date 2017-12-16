@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Stack;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.assignment_5.calculator.operations.CalculatorAdvanceOperations;
@@ -98,15 +99,30 @@ public class AdvancedPanel extends JPanel {
 
 			btnSquareRoot.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					// numberToInsert += btn8.getText();
-					// textArea.append(btn8.getText());
+					double a = numberStack.pop();
+					double result;
+					try {
+						result = calculateAdvance.squareRoot(a);
+						textArea.append("\n" + result);
+						numberStack.push(result);
+					} catch (Exception exc) {
+						JOptionPane.showMessageDialog(null, exc.getMessage(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
+					}
 				}
 			});
 
 			btnNthRoot.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					// numberToInsert += btn9.getText();
-					// textArea.append(btn9.getText());;
+					double a = numberStack.pop();
+					double exp = numberStack.pop();
+					double result;
+					try {
+						result = calculateAdvance.nthSquareRoot(a, exp);
+						textArea.append("\n" + result);
+						numberStack.push(result);
+					} catch (Exception exc) {
+						JOptionPane.showMessageDialog(null, exc.getMessage(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
+					}
 				}
 			});
 

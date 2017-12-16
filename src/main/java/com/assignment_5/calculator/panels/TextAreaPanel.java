@@ -23,10 +23,13 @@ public class TextAreaPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = -8331732502392928910L;
 	
-	private JTextArea textArea = new JTextArea();
-	private JScrollPane scrollPane = new JScrollPane(textArea);
+	private JTextArea textArea;
+	private JScrollPane scrollPane;
 	
 	public TextAreaPanel() {
+		textArea = new JTextArea();
+		scrollPane = new JScrollPane(textArea);
+		
         textArea.setEditable(false);
         textArea.setFont(new Font("Helvetica", Font.PLAIN, 20));
 		textArea.setText("");
@@ -39,8 +42,7 @@ public class TextAreaPanel extends JPanel{
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 	    setBounds(2, 2, 496, 80);
 	    setLayout(null);
-	    textArea.setBounds(2, 2, 492, 76);
-	//    scrollPane.setBounds(r);
+	    scrollPane.setBounds(2, 2, 492, 76);
 	    add(scrollPane);
 	}
 
@@ -68,5 +70,11 @@ public class TextAreaPanel extends JPanel{
     public JTextArea getTextArea1() {
         return textArea;
     }
+
+	public int getRows() {
+		int i;
+		i = textArea.getRows();
+		return i;
+	}
 }
 

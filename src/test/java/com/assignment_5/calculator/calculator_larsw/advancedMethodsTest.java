@@ -169,16 +169,22 @@ public class advancedMethodsTest {
 		}
 	}
 
-	/*
-	 * @Test public void testCalculatorAddBaseNegative() { double tempRandomValue1 =
-	 * 0; double tempRandomValue2 = 0.5; double tempResult = 0;
-	 * 
-	 * for (int i = 0; i < 51; i++) { tempRandomValue1 = random.nextDouble() * -100;
-	 * tempResult = Math.pow(tempRandomValue1, tempRandomValue2);
-	 * LOG.info("Testing the method squareRoot with " + tempRandomValue1);
-	 * assertEquals(calcAdvancedOperations.squareRoot(tempRandomValue1), tempResult,
-	 * 0); } }
-	 */
+	
+	@Test
+	public void testCalculatorSquareRootNegative() {
+		double tempRandomValue1 = 0;
+
+		for (int i = 0; i < 51; i++) {
+			tempRandomValue1 = random.nextDouble() * -100;
+			LOG.info("Testing the method squareRoot with " + tempRandomValue1);
+			try {
+				calcAdvancedOperations.squareRoot(tempRandomValue1);
+		        fail("Square root must be a positiv number!");
+		    } catch (ArithmeticException arrExc) {
+		        assertTrue(arrExc.getMessage(), true);
+		    }
+		}
+	}	
 
 	@Test
 	public void testCalculatorBaseZero() {

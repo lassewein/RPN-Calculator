@@ -45,10 +45,17 @@ public class CalculatorAdvanceOperations implements CalculatorAdvancedOperations
 	 * @version 1.0
 	 * @param a the variable to calculate
 	 * @return result calculated to the square root 
+	 * @exception ArithmeticException if the number is less than zero
 	 * 
 	 */
 	public double squareRoot(double a) {
-		return Math.sqrt(a);
+		double result;	
+		if (a < 0.0) {
+			throw new ArithmeticException("Square root must be a positiv number!");
+		} else {
+			result = Math.sqrt(a);
+		}
+		return result;
 	}
 
 	/**
@@ -62,17 +69,25 @@ public class CalculatorAdvanceOperations implements CalculatorAdvancedOperations
 	 * 
 	 */
 	public double nthSquareRoot(double a, double e) {
-		return Math.pow(a, 1/e);
+		double result;	
+		if (a < 0.0) {
+			throw new ArithmeticException("Square root must be a positiv number!");
+		} else {
+			result = Math.pow(a, 1/e);
+		}
+		return result;
 	}
+		
 
 	/**
 	 * log calculate the ten:th loggaritm of a
 	 * 
 	 * @author Lars Weingartner
 	 * @version 1.0
-	 * @param a the base to calculate
-	 * @return result ten:th logaritm
-	 * 
+	 * @param a the variable to calculate
+	 * @return result calculated to the square root 
+	 * @exception ArithmeticException if the number is less than zero for even roots
+	 *
 	 */
 	public double log(double a) {
 		return Math.log(a);
