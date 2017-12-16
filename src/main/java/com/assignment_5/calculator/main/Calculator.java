@@ -1,4 +1,11 @@
 package com.assignment_5.calculator.main;
+/**
+ * Class Calculator
+ *      
+ * @author Lars Weingartner
+ * @version 1.0
+ * 
+ */
 
 import com.assignment_5.calculator.windows.WindowBasic;
 

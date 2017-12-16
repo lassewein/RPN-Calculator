@@ -3,9 +3,13 @@ package com.assignment_5.calculator.panels;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Stack;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import com.assignment_5.calculator.operations.CalculatorAdvanceOperations;
+import com.assignment_5.calculator.operations.CalculatorBasicOperations;
 
 public class AdvancedPanel extends JPanel {
 
@@ -13,7 +17,11 @@ public class AdvancedPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 8970194930053662758L;
-
+	
+	private TextAreaPanel textArea = new TextAreaPanel();
+	private Stack<Double> numberStack = new Stack<Double>();
+	private CalculatorAdvanceOperations calculateAdvance = new CalculatorAdvanceOperations();
+	
 	// Row 1, left to right
 		private JButton btnSquare = new JButton("x\u00B2");
 		private JButton btnPowerOf = new JButton("x^y");
@@ -22,7 +30,10 @@ public class AdvancedPanel extends JPanel {
 		private JButton btnLog = new JButton("Log");
 		private JButton btnTensPower = new JButton("10^x");
 		
-		public AdvancedPanel() {
+		public AdvancedPanel(Stack<Double> numberStack, TextAreaPanel textArea) {
+			this.numberStack = numberStack;
+			this.textArea = textArea;
+			
 			setBounds(2, 84, 284, 262);
 			setLayout(null);
 			
