@@ -11,25 +11,12 @@ import com.assignment_5.calculator.panels.BasicPanel;
 import com.assignment_5.calculator.panels.TextAreaPanel;
 
 public class WindowBasic{
-	/**
-	 * 
-	 */
-//	private static final long serialVersionUID = 4457067577056812423L;
 
 	private Stack<Double> numberStack = new Stack<Double>();
 	private TextAreaPanel textArea = new TextAreaPanel();
 	private JFrame frame = new JFrame();
 	private BasicPanel basicPanel = new BasicPanel(numberStack, textArea);
 	private AdvancedPanel advancedPanel = new AdvancedPanel(numberStack, textArea);
-	
-	
-	
-
-//	private double firstNumber;
-//	private double secondNumber;
-//	private String numberToInsert = "";
-//	private double result;	
-
 	
 	/**
 	 * Create the application.

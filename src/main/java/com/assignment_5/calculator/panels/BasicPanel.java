@@ -20,7 +20,7 @@ public class BasicPanel extends JPanel {
 	/**
 	 * 
 	 */
-	String numberToInsert = "";
+	private String numberToInsert = "";
 	private TextAreaPanel textArea = new TextAreaPanel();
 	private Stack<Double> numberStack = new Stack<Double>();
 	private CalculatorBasicOperations calculateBasic = new CalculatorBasicOperations();

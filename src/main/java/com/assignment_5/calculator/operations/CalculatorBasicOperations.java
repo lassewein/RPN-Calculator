@@ -27,7 +27,6 @@ public class CalculatorBasicOperations implements CalculatorBasicOperationsInter
 		return result;
 	}
 
-
 	/**
 	 * calculate a subtracted with b
 	 * 
@@ -42,7 +41,6 @@ public class CalculatorBasicOperations implements CalculatorBasicOperationsInter
 		double result = a - b; 
 		return result;
 	}
-
 
 	/**
 	 * calculate a multiplied with b
@@ -93,6 +91,5 @@ public class CalculatorBasicOperations implements CalculatorBasicOperationsInter
 		double result = -a;
 		return result;
 	}
-
 
 }

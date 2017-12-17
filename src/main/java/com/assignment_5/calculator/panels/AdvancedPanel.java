@@ -125,6 +125,7 @@ public class AdvancedPanel extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					double a = numberStack.pop();
 					double exp = numberStack.pop();
+					
 					double result;
 					try {
 						result = calculateAdvance.nthSquareRoot(a, exp);

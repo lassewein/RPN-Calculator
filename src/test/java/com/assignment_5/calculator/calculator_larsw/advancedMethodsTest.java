@@ -289,12 +289,10 @@ public class advancedMethodsTest {
 	public void testCalculatorNthSquareRootTwoZero() {
 		double tempRandomValue1 = 0;
 		double tempRandomValue2 = 0;
-		double tempResult = 0;
 
-		tempResult = Math.pow(tempRandomValue1, 1 / tempRandomValue2);
 		LOG.info("Testing the method nthSquareRoot with " + tempRandomValue1 + " and " + tempRandomValue2);
 		try {
-			calcAdvancedOperations.squareRoot(tempRandomValue1);
+			calcAdvancedOperations.nthSquareRoot(tempRandomValue1, tempRandomValue2);
 			fail("Square root must be a positiv number!");
 		} catch (ArithmeticException arrExc) {
 			assertTrue(arrExc.getMessage(), true);
