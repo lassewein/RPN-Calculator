@@ -5,8 +5,11 @@ package com.assignment_5.calculator.calculator_larsw;
 
 import java.util.Random;
 import java.util.logging.Logger;
+
 import org.junit.Test;
+
 import com.assignment_5.calculator.operations.CalculatorBasicOperations;
+
 import junit.framework.TestCase;
 
 /**

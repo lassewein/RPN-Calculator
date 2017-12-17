@@ -207,12 +207,21 @@ public class BasicPanel extends JPanel {
 
 		btnDivide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				double b = numberStack.pop();
-				double a = numberStack.pop();
+				double b; 
+				double a;
 				double result;
+				
+				if (!numberToInsert.isEmpty()){
+					b = Double.parseDouble(numberToInsert);
+					textArea.append("\n");
+				} else {
+					b = numberStack.pop();
+				}
+				a = numberStack.pop();
+				
 				try {
 					result = calculateBasic.calculatorDivision(a, b);
-					textArea.append("\n" + result);
+					textArea.append(result + "\n");
 					numberStack.push(result);
 				} catch (Exception exc) {
 					JOptionPane.showMessageDialog(null, exc.getMessage(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
@@ -245,10 +254,19 @@ public class BasicPanel extends JPanel {
 
 		btnMultiply.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				double a = numberStack.pop();
-				double b = numberStack.pop();
-				double result = calculateBasic.calculatorMultiplication(a, b);
-				textArea.append("\n" + result);
+				double b; 
+				double a;
+				double result;
+				
+				if (!numberToInsert.isEmpty()){
+					b = Double.parseDouble(numberToInsert);
+					textArea.append("\n");
+				} else {
+					b = numberStack.pop();
+				}
+				a = numberStack.pop();
+				result = calculateBasic.calculatorMultiplication(a, b);
+				textArea.append(result + "\n");
 				numberStack.push(result);
 
 			}
@@ -277,13 +295,20 @@ public class BasicPanel extends JPanel {
 
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				double b = numberStack.pop();
-				double a = numberStack.pop();
+				double b; 
+				double a;
 				double result;
+				
+				if (!numberToInsert.isEmpty()){
+					b = Double.parseDouble(numberToInsert);
+					textArea.append("\n");
+				} else {
+					b = numberStack.pop();
+				}
+				a = numberStack.pop();
 
 				result = calculateBasic.calculatorAdd(a, b);
-				textArea.append("\n" + result);
+				textArea.append(result + "\n");
 				numberStack.push(result);
 			}
 		});
@@ -312,12 +337,20 @@ public class BasicPanel extends JPanel {
 
 		btnSubtract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				double b = numberStack.pop();
-				double a = numberStack.pop();
+				double b; 
+				double a;
 				double result;
+				
+				if (!numberToInsert.isEmpty()){
+					b = Double.parseDouble(numberToInsert);
+					textArea.append("\n");
+				} else {
+					b = numberStack.pop();
+				}
+				a = numberStack.pop();
 
 				result = calculateBasic.calculatorSubtract(a, b);
-				textArea.append("\n" + result);
+				textArea.append(result + "\n");
 				numberStack.push(result);
 			}
 		});
@@ -338,11 +371,18 @@ public class BasicPanel extends JPanel {
 
 		btnPlusMinus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				double a = numberStack.pop();
+				double a;
 				double result;
+				
+				if (!numberToInsert.isEmpty()){
+					a = Double.parseDouble(numberToInsert);
+					textArea.append("\n");
+				} else {
+					a = numberStack.pop();
+				}
 
 				result = calculateBasic.calculatorNegative(a);
-				textArea.append("\n" + result);
+				textArea.append(result + "\n");
 				numberStack.push(result);
 			}
 		});

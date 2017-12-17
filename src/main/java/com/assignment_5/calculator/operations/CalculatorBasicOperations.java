@@ -81,7 +81,7 @@ public class CalculatorBasicOperations implements CalculatorBasicOperationsInter
 	}
 	
 	/**
-	 * Change apositiv number to a negative one and vise versa
+	 * Change a positiv number to a negative one and vise versa
 	 * 
 	 * @author Lars Weingartner
 	 * @version 1.0

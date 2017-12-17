@@ -1,18 +1,14 @@
 package com.assignment_5.calculator.windows;
 
+import java.awt.Color;
+import java.util.Stack;
+
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.border.LineBorder;
 
 import com.assignment_5.calculator.panels.AdvancedPanel;
 import com.assignment_5.calculator.panels.BasicPanel;
 import com.assignment_5.calculator.panels.TextAreaPanel;
-
-
-import java.util.Stack;
-
-import java.awt.Color;
-import javax.swing.border.LineBorder;
 
 public class WindowBasic{
 	/**

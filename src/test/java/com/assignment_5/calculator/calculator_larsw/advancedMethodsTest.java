@@ -1,6 +1,8 @@
 package com.assignment_5.calculator.calculator_larsw;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Random;
 import java.util.logging.Logger;
@@ -8,7 +10,6 @@ import java.util.logging.Logger;
 import org.junit.Test;
 
 import com.assignment_5.calculator.operations.CalculatorAdvanceOperations;
-import com.assignment_5.calculator.operations.CalculatorBasicOperations;
 
 public class advancedMethodsTest {
 
@@ -169,7 +170,6 @@ public class advancedMethodsTest {
 		}
 	}
 
-	
 	@Test
 	public void testCalculatorSquareRootNegative() {
 		double tempRandomValue1 = 0;
@@ -179,15 +179,15 @@ public class advancedMethodsTest {
 			LOG.info("Testing the method squareRoot with " + tempRandomValue1);
 			try {
 				calcAdvancedOperations.squareRoot(tempRandomValue1);
-		        fail("Square root must be a positiv number!");
-		    } catch (ArithmeticException arrExc) {
-		        assertTrue(arrExc.getMessage(), true);
-		    }
+				fail("Square root must be a positiv number!");
+			} catch (ArithmeticException arrExc) {
+				assertTrue(arrExc.getMessage(), true);
+			}
 		}
-	}	
+	}
 
 	@Test
-	public void testCalculatorBaseZero() {
+	public void testCalculatorSquareRootBaseZero() {
 		double tempRandomValue1 = 0;
 		double tempRandomValue2 = 0.5;
 		double tempResult = 0;
@@ -219,18 +219,25 @@ public class advancedMethodsTest {
 		}
 	}
 
-	/*
-	 * @Test public void testCalculatorNthSquareRootBaseNegative() { double
-	 * tempRandomValue1 = 0; double tempRandomValue2 = 0; double tempResult = 0;
-	 * 
-	 * for (int i = 0; i < 51; i++) { tempRandomValue1 = random.nextDouble() * -100;
-	 * tempRandomValue2 = random.nextDouble() * 10; tempResult =
-	 * Math.pow(tempRandomValue1, 1/tempRandomValue2);
-	 * LOG.info("Testing the method nthSquareRoot with " + tempRandomValue1 +
-	 * " and " + tempRandomValue2);
-	 * assertEquals(calcAdvancedOperations.nthSquareRoot(tempRandomValue1,
-	 * tempRandomValue2), tempResult, 0); } }
-	 */
+	@Test
+	public void testCalculatorNthSquareRootBaseNegative() {
+		double tempRandomValue1 = 0;
+		double tempRandomValue2 = 0;
+
+		for (int i = 0; i < 51; i++) {
+			tempRandomValue1 = random.nextDouble() * -100;
+			tempRandomValue2 = random.nextDouble() * 10;
+			LOG.info("Testing the method nthSquareRoot with " + tempRandomValue1 + " and " + tempRandomValue2);
+			try {
+				calcAdvancedOperations.nthSquareRoot(tempRandomValue1, tempRandomValue2);
+				fail("Square root must be a positiv number!");
+			} catch (ArithmeticException arrExc) {
+				assertTrue(arrExc.getMessage(), true);
+			}
+		}
+
+	}
+
 	@Test
 	public void testCalculatorNthSquareRootExponentNegative() {
 		double tempRandomValue1 = 0;
@@ -246,18 +253,24 @@ public class advancedMethodsTest {
 		}
 	}
 
-	/*
-	 * @Test public void testCalculatorNthSquareRootTwoNegative() { double
-	 * tempRandomValue1 = 0; double tempRandomValue2 = 0; double tempResult = 0;
-	 * 
-	 * for (int i = 0; i < 51; i++) { tempRandomValue1 = random.nextDouble() * -100;
-	 * tempRandomValue2 = random.nextDouble() * -10; tempResult =
-	 * Math.pow(tempRandomValue1, 1/tempRandomValue2);
-	 * LOG.info("Testing the method nthSquareRoot with " + tempRandomValue1 +
-	 * " and " + tempRandomValue2);
-	 * assertEquals(calcAdvancedOperations.nthSquareRoot(tempRandomValue1,
-	 * tempRandomValue2), tempResult, 0); } }
-	 */
+	@Test
+	public void testCalculatorNthSquareRootTwoNegative() {
+		double tempRandomValue1 = 0;
+		double tempRandomValue2 = 0;
+
+		for (int i = 0; i < 51; i++) {
+			tempRandomValue1 = random.nextDouble() * -100;
+			tempRandomValue2 = random.nextDouble() * -10;
+			LOG.info("Testing the method squareRoot with " + tempRandomValue1);
+			try {
+				calcAdvancedOperations.squareRoot(tempRandomValue1);
+				fail("Square root must be a positiv number!");
+			} catch (ArithmeticException arrExc) {
+				assertTrue(arrExc.getMessage(), true);
+			}
+		}
+	}
+
 	@Test
 	public void testCalculatorNthSquareRootExponentZero() {
 		double tempRandomValue1 = 0;
@@ -272,18 +285,22 @@ public class advancedMethodsTest {
 		}
 	}
 
-	/*
-	 * @Test public void testCalculatorNthSquareRootTwoZero() { double
-	 * tempRandomValue1 = 0; double tempRandomValue2 = 0; double tempResult = 0;
-	 * 
-	 * tempResult = Math.pow(tempRandomValue1, 1/tempRandomValue2);
-	 * LOG.info("Testing the method nthSquareRoot with " + tempRandomValue1 +
-	 * " and " + tempRandomValue2);
-	 * assertEquals(calcAdvancedOperations.nthSquareRoot(tempRandomValue1,
-	 * tempRandomValue2), tempResult, 0);
-	 * 
-	 * }
-	 */
+	@Test
+	public void testCalculatorNthSquareRootTwoZero() {
+		double tempRandomValue1 = 0;
+		double tempRandomValue2 = 0;
+		double tempResult = 0;
+
+		tempResult = Math.pow(tempRandomValue1, 1 / tempRandomValue2);
+		LOG.info("Testing the method nthSquareRoot with " + tempRandomValue1 + " and " + tempRandomValue2);
+		try {
+			calcAdvancedOperations.squareRoot(tempRandomValue1);
+			fail("Square root must be a positiv number!");
+		} catch (ArithmeticException arrExc) {
+			assertTrue(arrExc.getMessage(), true);
+		}
+	}
+
 	// * **************************************************//
 	// * ---------- End of NthSquareRoot test ---------- *//
 	// * **************************************************//
@@ -303,36 +320,41 @@ public class advancedMethodsTest {
 			assertEquals(calcAdvancedOperations.log(tempRandomValue), tempResult, 0);
 		}
 	}
-	/*
-	 * @Test public void testCalculatorLogNegative() { 
-	 * double tempRandomValue = 0;
-	 * double tempResult = 0;
-	 * 
-	 * for (int i = 0; i < 51; i++) { 
-	 * tempRandomValue = random.nextDouble() * -100;
-	 * 
-	 * tempResult = Math.log(tempRandomValue);
-	 * LOG.info("Testing the method log with " + tempRandomValue);
-	 * assertEquals(calcAdvancedOperations.log(tempRandomValue), tempResult, 0); } }
-	 */
 
-	/*
-	 * @Test public void testCalculatorLogZero() { 
-	 * double tempRandomValue = 0;
-	 * double tempResult = 0;
-	 * 
-	 * tempResult = Math.log(tempRandomValue);
-	 * LOG.info("Testing the method log with " + tempRandomValue);
-	 * assertEquals(calcAdvancedOperations.log(tempRandomValue), tempResult, 0);
-	 * 
-	 * }
-	 */
+	@Test
+	public void testCalculatorLogNegative() {
+		double tempRandomValue = 0;
+
+		for (int i = 0; i < 51; i++) {
+			tempRandomValue = random.nextDouble() * -100;
+			LOG.info("Testing the method log with " + tempRandomValue);
+			try {
+				calcAdvancedOperations.log(tempRandomValue);
+				fail("Must be a positiv number!");
+			} catch (ArithmeticException arrExc) {
+				assertTrue(arrExc.getMessage(), true);
+			}
+		}
+	}
+
+	@Test
+	public void testCalculatorLogZero() {
+		double tempRandomValue = 0;
+
+		LOG.info("Testing the method log with " + tempRandomValue);
+		try {
+			calcAdvancedOperations.log(tempRandomValue);
+			fail("Must be a positiv number!");
+		} catch (ArithmeticException arrExc) {
+			assertTrue(arrExc.getMessage(), true);
+		}
+
+	}
 
 	// * ****************************************//
 	// * ---------- End of Log test ---------- *//
 	// * ****************************************//
-//	tenPowerOf
-	
+
 	// * ***************************************//
 	// * ----------Start of TenPowerOf test ----------*//
 	// * ***************************************//
@@ -348,7 +370,7 @@ public class advancedMethodsTest {
 			assertEquals(calcAdvancedOperations.tenPowerOf(tempRandomValue), tempResult, 0);
 		}
 	}
-	
+
 	@Test
 	public void testCalculatorTenPowerOfNegative() {
 		double tempRandomValue = 0;

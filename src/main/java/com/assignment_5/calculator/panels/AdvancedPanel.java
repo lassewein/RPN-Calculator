@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.assignment_5.calculator.operations.CalculatorAdvanceOperations;
-import com.assignment_5.calculator.operations.CalculatorBasicOperations;
 
 public class AdvancedPanel extends JPanel {
 
@@ -87,13 +86,24 @@ public class AdvancedPanel extends JPanel {
 		public void addActionListeners() {
 			btnSquare.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					double a = numberStack.pop();
+					double result;
+					
+					result = calculateAdvance.square(a);
+					textArea.append(result + "\n");
+					numberStack.push(result);
 				}
 			});
 
 			btnPowerOf.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					// numberToInsert += btn7.getText();
-					// textArea.append(btn7.getText());
+					double exp = numberStack.pop();
+					double a = numberStack.pop();
+					double result;
+					
+					result = calculateAdvance.nthSquareRoot(a, exp);
+					textArea.append(result + "\n");
+					numberStack.push(result);
 				}
 			});
 
@@ -103,7 +113,7 @@ public class AdvancedPanel extends JPanel {
 					double result;
 					try {
 						result = calculateAdvance.squareRoot(a);
-						textArea.append("\n" + result);
+						textArea.append(result + "\n");
 						numberStack.push(result);
 					} catch (Exception exc) {
 						JOptionPane.showMessageDialog(null, exc.getMessage(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
@@ -118,7 +128,7 @@ public class AdvancedPanel extends JPanel {
 					double result;
 					try {
 						result = calculateAdvance.nthSquareRoot(a, exp);
-						textArea.append("\n" + result);
+						textArea.append(result + "\n");
 						numberStack.push(result);
 					} catch (Exception exc) {
 						JOptionPane.showMessageDialog(null, exc.getMessage(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
@@ -128,25 +138,26 @@ public class AdvancedPanel extends JPanel {
 
 			btnLog.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					// if(numberToInsert != "") {
-					// firstNumber = numberStack.pop();
-					// secondNumber = Double.parseDouble(numberToInsert);
-					// textArea.removeAll();
-					// }else {
-					// secondNumber = numberStack.pop();
-					// firstNumber = numberStack.pop();
-					// }
-					// result = firstNumber + secondNumber;
-					// numberStack.push(result);
-					// textArea.append(result + "\n");
+					double a = numberStack.pop();
+					double result;
+					try {
+						result = calculateAdvance.log(a);
+						textArea.append(result + "\n");
+						numberStack.push(result);
+					} catch (Exception exc) {
+						JOptionPane.showMessageDialog(null, exc.getMessage(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
+					}
 				}
 			});
 
 			btnTensPower.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					// firstNumber = Double.parseDouble(textArea.getText());
-					// textArea.setText("");
-					// operator = "-";
+					double a = numberStack.pop();
+					double result;
+					
+					result = calculateAdvance.tenPowerOf(a);
+					textArea.append(result + "\n");
+					numberStack.push(result);
 				}
 			});
 		}

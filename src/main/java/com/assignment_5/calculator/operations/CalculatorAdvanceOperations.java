@@ -66,11 +66,11 @@ public class CalculatorAdvanceOperations implements CalculatorAdvancedOperations
 	 * @param a the base to calculate
 	 * @param e the power of root, e.g 1/e
 	 * @return result calculated to the n:th square root of a
-	 * 
+	 * @exception ArithmeticException if the number is less than zero and the n:th root is even
 	 */
 	public double nthSquareRoot(double a, double e) {
 		double result;	
-		if (a < 0.0) {
+		if ((a < 0.0) && ((e % 2) == 0)) {
 			throw new ArithmeticException("Square root must be a positiv number!");
 		} else {
 			result = Math.pow(a, 1/e);
@@ -86,11 +86,18 @@ public class CalculatorAdvanceOperations implements CalculatorAdvancedOperations
 	 * @version 1.0
 	 * @param a the variable to calculate
 	 * @return result calculated to the square root 
-	 * @exception ArithmeticException if the number is less than zero for even roots
+	 * @exception ArithmeticException if the number is zero or less than zero
 	 *
 	 */
 	public double log(double a) {
-		return Math.log(a);
+		double result;	
+		if (a <= 0.0) {
+			throw new ArithmeticException("It must be a positiv number!");
+		} else {
+			result = Math.log(a);
+		}
+		return result;
+		
 	}
 	
 	/**
