@@ -70,7 +70,7 @@ public class CalculatorAdvanceOperations implements CalculatorAdvancedOperations
 	 */
 	public double nthSquareRoot(double a, double e) {
 		double result;	
-		if (a < 0.0) {
+		if (a < 0.0 || e == 0) {
 			throw new ArithmeticException("Square root must be a positiv number!");
 		} else {
 			result = Math.pow(a, 1/e);
