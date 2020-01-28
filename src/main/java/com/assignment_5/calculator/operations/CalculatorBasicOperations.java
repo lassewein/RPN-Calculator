@@ -58,13 +58,13 @@ public class CalculatorBasicOperations implements CalculatorBasicOperationsInter
 	}
 
 	/**
-	 * calculate a devided by b
+	 * calculate a divided by b
 	 * 
 	 * @author Lars Weingartner
 	 * @version 1.0
 	 * @param a the divident
 	 * @param b the divider
-	 * @return result ofthe division
+	 * @return result of the division
 	 * @exception ArithmeticException if the number zero
 	 * 
 	 */
@@ -79,7 +79,7 @@ public class CalculatorBasicOperations implements CalculatorBasicOperationsInter
 	}
 	
 	/**
-	 * Change a positiv number to a negative one and vise versa
+	 * Change a positive number to a negative one and vise versa
 	 * 
 	 * @author Lars Weingartner
 	 * @version 1.0

@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
 /**
- * @author lars
+ * @author Lars
  *
  */
 public class TextAreaPanel extends JPanel{
@@ -56,7 +56,10 @@ public class TextAreaPanel extends JPanel{
 
     public void append(String x) {
     	textArea.append(x);
-        
+    }
+    
+    public void clearTextArea() {
+    	textArea.setText("");
     }
 
     public void getFocus() {
@@ -75,6 +78,11 @@ public class TextAreaPanel extends JPanel{
 		int i;
 		i = textArea.getRows();
 		return i;
+	}
+
+	public int getLineCount() {
+		return textArea.getLineCount();
+		
 	}
 }
 

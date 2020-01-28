@@ -319,7 +319,7 @@ public class advancedMethodsTest {
 			tempRandomValue = random.nextDouble() * 100;
 			tempResult = Math.log(tempRandomValue);
 			LOG.info("Testing the method Log with " + tempRandomValue);
-			assertEquals(calcAdvancedOperations.log(tempRandomValue), tempResult, 0);
+			assertEquals(calcAdvancedOperations.ln(tempRandomValue), tempResult, 0);
 		}
 	}
 
@@ -331,7 +331,7 @@ public class advancedMethodsTest {
 			tempRandomValue = random.nextDouble() * -100;
 			LOG.info("Testing the method log with " + tempRandomValue);
 			try {
-				calcAdvancedOperations.log(tempRandomValue);
+				calcAdvancedOperations.ln(tempRandomValue);
 				fail("Must be a positiv number!");
 			} catch (ArithmeticException arrExc) {
 				assertTrue(arrExc.getMessage(), true);
@@ -345,7 +345,7 @@ public class advancedMethodsTest {
 
 		LOG.info("Testing the method log with " + tempRandomValue);
 		try {
-			calcAdvancedOperations.log(tempRandomValue);
+			calcAdvancedOperations.ln(tempRandomValue);
 			fail("Must be a positiv number!");
 		} catch (ArithmeticException arrExc) {
 			assertTrue(arrExc.getMessage(), true);

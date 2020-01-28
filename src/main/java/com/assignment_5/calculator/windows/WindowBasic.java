@@ -29,7 +29,7 @@ public class WindowBasic{
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() { 
-		frame.setBounds(100, 100, 500, 348);
+		frame.setBounds(100, 100, 518, 388);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setTitle("Calculator");

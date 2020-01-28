@@ -88,7 +88,7 @@ public class CalculatorAdvanceOperations implements CalculatorAdvancedOperations
 	 * @exception ArithmeticException if the number is zero or less than zero
 	 *
 	 */
-	public double log(double a) {
+	public double ln(double a) {
 		double result;	
 		if (a <= 0.0) {
 			throw new ArithmeticException("It must be a positiv number!");

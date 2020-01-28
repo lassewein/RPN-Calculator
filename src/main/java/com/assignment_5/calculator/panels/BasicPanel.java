@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Stack;
-
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,19 +22,21 @@ public class BasicPanel extends JPanel {
 	private String numberToInsert = "";
 	private TextAreaPanel textArea = new TextAreaPanel();
 	private Stack<Double> numberStack = new Stack<Double>();
+	private Stack<Double> revNumberStack = new Stack<Double>();
 	private CalculatorBasicOperations calculateBasic = new CalculatorBasicOperations();
+//private ImageIcon one = new ImageIcon("one.bmp");
 
 	// Row 1, left to right
-	private JButton btnSwap = new JButton("\u21F3");
+	private JButton btnSwap = new JButton("\u21F3"); //Up Down Arrow
 	private JButton btnClear = new JButton("C");
-	private JButton btnBackspace = new JButton("\u2B05");
-	private JButton btnDivide = new JButton("\u00F7");
+	private JButton btnBackspace = new JButton("\u2B05"); //Leftwards Black Arrow
+	private JButton btnDivide = new JButton("\u00F7"); //Division Sign
 
 	// Row 2, left to right
 	private JButton btn7 = new JButton("7");
 	private JButton btn8 = new JButton("8");
 	private JButton btn9 = new JButton("9");
-	private JButton btnMultiply = new JButton("\u00D7");
+	private JButton btnMultiply = new JButton("\u00D7"); //Multiplication Sign
 
 	// Row 3, left to right
 	private JButton btn4 = new JButton("4");
@@ -44,7 +45,7 @@ public class BasicPanel extends JPanel {
 	private JButton btnAdd = new JButton("+");
 
 	// Row 4, left to right
-	private JButton btn1 = new JButton("1");
+	private JButton btn1 = new JButton("1");	
 	private JButton btn2 = new JButton("2");
 	private JButton btn3 = new JButton("3");
 	private JButton btnSubtract = new JButton("-");
@@ -52,8 +53,8 @@ public class BasicPanel extends JPanel {
 	// Row 5, left to right
 	private JButton btn0 = new JButton("0");
 	private JButton btnDot = new JButton(".");
-	private JButton btnPlusMinus = new JButton("\u00B1");
-	private JButton btnEnter = new JButton("\u21B5");
+	private JButton btnPlusMinus = new JButton("\u00B1"); //Plus-Minus Sign
+	private JButton btnEnter = new JButton("\u21B5"); //Downwards Arrow with Corner Leftwards
 
 	public BasicPanel(Stack<Double> numberStack, TextAreaPanel textArea) {
 		this.numberStack = numberStack;
@@ -184,18 +185,15 @@ public class BasicPanel extends JPanel {
 				b = numberStack.pop();
 				numberStack.push(a);
 				numberStack.push(b);
-
-				// textArea.remove(textArea.getRows());
-				// textArea.remove(textArea.getRows());
-				// textArea.append(Double.toString(a));
-				// textArea.append(Double.toString(b));
+				update();
 			}
 		});
 
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				numberStack.clear();
-				textArea.removeAll();
+				textArea.clearTextArea();
+
 			}
 		});
 
@@ -221,8 +219,8 @@ public class BasicPanel extends JPanel {
 				
 				try {
 					result = calculateBasic.calculatorDivision(a, b);
-					textArea.append(result + "\n");
 					numberStack.push(result);
+					update();
 				} catch (Exception exc) {
 					JOptionPane.showMessageDialog(null, exc.getMessage(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -266,9 +264,8 @@ public class BasicPanel extends JPanel {
 				}
 				a = numberStack.pop();
 				result = calculateBasic.calculatorMultiplication(a, b);
-				textArea.append(result + "\n");
 				numberStack.push(result);
-
+				update();
 			}
 		});
 
@@ -308,8 +305,9 @@ public class BasicPanel extends JPanel {
 				a = numberStack.pop();
 
 				result = calculateBasic.calculatorAdd(a, b);
-				textArea.append(result + "\n");
+				
 				numberStack.push(result);
+				update();
 			}
 		});
 
@@ -343,15 +341,15 @@ public class BasicPanel extends JPanel {
 				
 				if (!numberToInsert.isEmpty()){
 					b = Double.parseDouble(numberToInsert);
-					textArea.append("\n");
+					//textArea.append("\n");
 				} else {
 					b = numberStack.pop();
 				}
 				a = numberStack.pop();
 
 				result = calculateBasic.calculatorSubtract(a, b);
-				textArea.append(result + "\n");
 				numberStack.push(result);
+				update();
 			}
 		});
 
@@ -375,15 +373,21 @@ public class BasicPanel extends JPanel {
 				double result;
 				
 				if (!numberToInsert.isEmpty()){
-					a = Double.parseDouble(numberToInsert);
-					textArea.append("\n");
-				} else {
-					a = numberStack.pop();
+					numberStack.push(Double.parseDouble(numberToInsert));
+					numberToInsert = "";
 				}
+					//a = Double.parseDouble(numberToInsert);
+					//textArea.append("\n");
+					//numberToInsert = "";
+					
+				//} else {
+					a = numberStack.pop();
+				//}
 
 				result = calculateBasic.calculatorNegative(a);
-				textArea.append(result + "\n");
+				//numberToInsert = Double.toString(result);
 				numberStack.push(result);
+				update();
 			}
 		});
 
@@ -391,7 +395,7 @@ public class BasicPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (numberToInsert.isEmpty()) {
 					numberStack.push(numberStack.peek());
-					textArea.append(Double.toString(numberStack.peek()));
+					textArea.append(Double.toString(numberStack.peek()) + "\n");
 				} else {
 					numberStack.push(Double.parseDouble(numberToInsert));
 					numberToInsert = "";
@@ -399,6 +403,22 @@ public class BasicPanel extends JPanel {
 				}
 			}
 		});
-
+		
+	}
+	
+	private void update() {
+		double temp;
+		
+		while(!numberStack.empty()) {
+			revNumberStack.push(numberStack.pop());
+		}
+		
+		textArea.clearTextArea();
+		
+		while(!revNumberStack.empty()) {
+			temp = revNumberStack.pop();
+			numberStack.push(temp);
+			textArea.append(temp + "\n");
+		}
 	}
 }

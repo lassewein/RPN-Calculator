@@ -20,6 +20,7 @@ public class AdvancedPanel extends JPanel {
 	
 	private TextAreaPanel textArea = new TextAreaPanel();
 	private Stack<Double> numberStack = new Stack<Double>();
+	private Stack<Double> revNumberStack = new Stack<Double>();
 	private CalculatorAdvanceOperations calculateAdvance = new CalculatorAdvanceOperations();
 	
 	// Row 1, left to right
@@ -27,7 +28,7 @@ public class AdvancedPanel extends JPanel {
 		private JButton btnPowerOf = new JButton("x^y");
 		private JButton btnSquareRoot = new JButton("\u221A x");
 		private JButton btnNthRoot = new JButton("x\u221A y");
-		private JButton btnLog = new JButton("Log");
+		private JButton btnLn = new JButton("Ln");
 		private JButton btnTensPower = new JButton("10^x");
 		
 		public AdvancedPanel(Stack<Double> numberStack, TextAreaPanel textArea) {
@@ -41,7 +42,7 @@ public class AdvancedPanel extends JPanel {
 			add(btnPowerOf);
 			add(btnSquareRoot);
 			add(btnNthRoot);
-			add(btnLog);
+			add(btnLn);
 			add(btnTensPower);
 			
 			setButtonFonts();
@@ -57,7 +58,7 @@ public class AdvancedPanel extends JPanel {
 			btnPowerOf.setFont(new Font(dialog, Font.BOLD, fontSize));
 			btnSquareRoot.setFont(new Font(dialog, Font.BOLD, fontSize));
 			btnNthRoot.setFont(new Font(dialog, Font.BOLD, fontSize));
-			btnLog.setFont(new Font(dialog, Font.BOLD, fontSize));
+			btnLn.setFont(new Font(dialog, Font.BOLD, fontSize));
 			btnTensPower.setFont(new Font(dialog, Font.BOLD, fontSize));
 		}
 
@@ -69,7 +70,7 @@ public class AdvancedPanel extends JPanel {
 			btnPowerOf.setBounds(212, 54, buttonSizeX, buttonSizeY);
 			btnSquareRoot.setBounds(212, 106, buttonSizeX, buttonSizeY);
 			btnNthRoot.setBounds(212, 158, buttonSizeX, buttonSizeY);
-			btnLog.setBounds(212, 210, buttonSizeX, buttonSizeY);
+			btnLn.setBounds(212, 210, buttonSizeX, buttonSizeY);
 			btnTensPower.setBounds(140, 210, buttonSizeX, buttonSizeY);
 		}
 		
@@ -78,7 +79,7 @@ public class AdvancedPanel extends JPanel {
 			btnPowerOf.setToolTipText("Calculate the base \"x\" to the power of \"y\".");
 			btnSquareRoot.setToolTipText("Calculate the square root of \"x\".");
 			btnNthRoot.setToolTipText("Calculate the N:th root of \"x\", e.g \"x\" to thepower of 1 devided by \"y\"");
-			btnLog.setToolTipText("Calculate the logaritm of \"x\".");
+			btnLn.setToolTipText("Calculate the natural logaritm of \"x\".");
 			btnTensPower.setToolTipText("Calculate the base 10 to the power of \"x\".");
 		}
 
@@ -90,8 +91,8 @@ public class AdvancedPanel extends JPanel {
 					double result;
 					
 					result = calculateAdvance.square(a);
-					textArea.append(result + "\n");
 					numberStack.push(result);
+					update();
 				}
 			});
 
@@ -102,8 +103,8 @@ public class AdvancedPanel extends JPanel {
 					double result;
 					
 					result = calculateAdvance.nthSquareRoot(a, exp);
-					textArea.append(result + "\n");
 					numberStack.push(result);
+					update();
 				}
 			});
 
@@ -113,8 +114,8 @@ public class AdvancedPanel extends JPanel {
 					double result;
 					try {
 						result = calculateAdvance.squareRoot(a);
-						textArea.append(result + "\n");
 						numberStack.push(result);
+						update();
 					} catch (Exception exc) {
 						JOptionPane.showMessageDialog(null, exc.getMessage(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
 					}
@@ -123,28 +124,27 @@ public class AdvancedPanel extends JPanel {
 
 			btnNthRoot.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					double a = numberStack.pop();
 					double exp = numberStack.pop();
-					
+					double a = numberStack.pop();
 					double result;
 					try {
 						result = calculateAdvance.nthSquareRoot(a, exp);
-						textArea.append(result + "\n");
 						numberStack.push(result);
+						update();
 					} catch (Exception exc) {
 						JOptionPane.showMessageDialog(null, exc.getMessage(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			});
 
-			btnLog.addActionListener(new ActionListener() {
+			btnLn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					double a = numberStack.pop();
 					double result;
 					try {
-						result = calculateAdvance.log(a);
-						textArea.append(result + "\n");
+						result = calculateAdvance.ln(a);
 						numberStack.push(result);
+						update();
 					} catch (Exception exc) {
 						JOptionPane.showMessageDialog(null, exc.getMessage(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
 					}
@@ -157,10 +157,25 @@ public class AdvancedPanel extends JPanel {
 					double result;
 					
 					result = calculateAdvance.tenPowerOf(a);
-					textArea.append(result + "\n");
 					numberStack.push(result);
+					update();
 				}
 			});
 		}
-
+		
+		private void update() {
+			double temp;
+			
+			while(!numberStack.empty()) {
+				revNumberStack.push(numberStack.pop());
+			}
+			
+			textArea.clearTextArea();
+			
+			while(!revNumberStack.empty()) {
+				temp = revNumberStack.pop();
+				numberStack.push(temp);
+				textArea.append(temp + "\n");
+			}
+		}
 }
